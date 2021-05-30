@@ -4,10 +4,10 @@ from django.urls import path, include
 
 from django.views.static import serve
 from django.conf.urls import url
+from BankApp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('BankApp.urls')),
-    url(r'^media/(?P<path>.*)$', serve,{'document_root':settings.MEDIA_ROOT}), 
-    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
+    path('api/branches/autocomplete',views.index.as_view(), name="Banks"),
+	path('api/branches',views.branches.as_view(), name="Branches"),
 ]
